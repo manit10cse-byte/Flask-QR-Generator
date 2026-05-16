@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Generator</title>
+
+    <style>
+
+        /* Page Styling */
+        body{
+            margin: 0;
+            padding: 0;
+            background: #f1f3f6;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        /* Main Box */
+        .container{
+            width: 320px;
+            background: white;
+
+            padding: 30px;
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Input Box */
+        input{
+            width: 90%;
+            padding: 10px;
+
+            border: 1px solid #ccc;
+            border-radius: 6px;
+
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        /* Button Styling */
+        button{
+            background: green;
+            color: white;
+
+            border: none;
+            padding: 10px 20px;
+
+            border-radius: 6px;
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        button:hover{
+            background: darkgreen;
+        }
+
+        /* QR Image Section */
+        .qr-box{
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Generate Your QR Code</h2>
+
+        <form method="POST">
+
+            <input 
+                type="text"
+                name="link"
+                placeholder="Enter your URL here"
+                required
+            >
+
+            <br>
+
+            <button type="submit">
+                Create QR
+            </button>
+
+        </form>
+
+        {% if qr_image %}
+
+        <div class="qr-box">
+
+            <img 
+                src="data:image/png;base64,{{ qr_image }}"
+                alt="QR Code"
+                width="200"
+            >
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
